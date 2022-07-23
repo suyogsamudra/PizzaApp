@@ -3,4 +3,25 @@
     <string name="add_to_cart">Add +</string>
     <string name="price">₹%1$f</string>
     <string name="go_to_cart">Go to cart</string>
+    <string name="confirmation_dialog_ok">OK</string>
+    <string name="confirmation_dialog_yes">Yes</string>
+    <string name="confirmation_dialog_no">No</string>
+
+    <string name="no_internet_error_title">No Internet connection</string>
+    <string name="no_internet_error_desc">Cannot connect to the internet, please check your internet connection and try again.</string>
+
+    <string name="api_error_bad_request">Server error</string>
+    <string name="api_error_bad_request_desc">Sorry, we have encountered an issue while connecting to the server, please try again later.</string>
+
+    <string name="api_error_unauthorised">Unauthorized</string>
+    <string name="api_error_unauthorised_desc">Sorry, your session has expired, please login again.</string>
+
+    <string name="api_error_not_found">Resource not found</string>
+    <string name="api_error_not_found_desc">Sorry, resource you are looking for is not available, please try again later.</string>
+
+    <string name="api_error_timeout">Timeout</string>
+    <string name="api_error_timeout_desc">Sorry, your request is timed out, Please check your internet connection and try again.</string>
+
+    <string name="general_error_title">Error</string>
+    <string name="api_error_title_unknown_desc">An error occurred, please try again later.</string>
 </resources>

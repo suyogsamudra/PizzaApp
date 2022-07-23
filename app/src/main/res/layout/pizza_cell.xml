@@ -17,9 +17,9 @@
         android:id="@+id/imgVeg"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:padding="1dp"
         android:layout_alignParentEnd="true"
         android:contentDescription="@null"
+        android:padding="1dp"
         app:srcCompat="@drawable/ic_veg" />
 
     <TextView
@@ -39,10 +39,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtName"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/small_top_margin"
         android:ellipsize="end"
-        android:lines="2"
-        android:maxLines="3"
+        android:maxLines="4"
         tools:text="Loaded with Extra Cheese!!" />
 
     <TextView
@@ -50,8 +49,9 @@
         style="@style/AppTheme.TextExtraLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtDescription"
-        android:layout_marginTop="@dimen/general_top_margin"
+        android:layout_alignTop="@id/btnAddToCart"
+        android:layout_alignBottom="@id/btnAddToCart"
+        android:gravity="center"
         tools:text="₹ 500.00 " />
 
     <com.google.android.material.button.MaterialButton
@@ -61,5 +61,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txtDescription"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/general_top_margin"
         android:text="@string/add_to_cart" />
 </RelativeLayout>

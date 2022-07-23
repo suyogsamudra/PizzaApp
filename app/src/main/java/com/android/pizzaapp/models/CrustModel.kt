@@ -1,13 +1,14 @@
 package com.android.pizzaapp.models
 
+import com.google.gson.annotations.SerializedName
+
 data class CrustModel(
-    val id : Int,
-    val name : String,
-    val selectedSizeIndex : Int,
-    val availableSizes : ArrayList<PizzaSizeModel>,
-    var selectedSize : PizzaSizeModel?
-){
-    init {
-        selectedSize = availableSizes.find { it.id == selectedSizeIndex }
-    }
-}
+    @SerializedName("id")
+    val id: Int,
+    @SerializedName("name")
+    val name: String,
+    @SerializedName("defaultSize")
+    val selectedSizeIndex: Int,
+    @SerializedName("sizes")
+    val availableSizes: ArrayList<PizzaSizeModel>,
+)
