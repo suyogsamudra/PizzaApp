@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.android.pizzaapp.databinding.ActivityPizzaListBinding
 import com.android.pizzaapp.models.handlerError
+import com.android.pizzaapp.ui.CustomiseBSDialog
 import com.android.pizzaapp.utils.isOnline
 
 class PizzaListActivity : AppCompatActivity() {
@@ -25,7 +26,9 @@ class PizzaListActivity : AppCompatActivity() {
 
         viewModel.obsResponse.observe(this) { response ->
             response?.error?.handlerError(supportFragmentManager, context)
-                ?: response.data?.let { uiInterface.setInfo(it) }
+                ?: response.data?.let { uiInterface.setInfo(it) { pizza ->
+                    CustomiseBSDialog(pizza).show(supportFragmentManager, "Add")
+                } }
         }
 
         if (isOnline(context)) viewModel.getPizzaData() else uiInterface.showError(supportFragmentManager)

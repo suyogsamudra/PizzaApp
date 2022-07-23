@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">PizzaApp</string>
-    <string name="add_to_cart">Add +</string>
+    <string name="add">Add +</string>
     <string name="price">₹%1$f</string>
     <string name="go_to_cart">Go to cart</string>
     <string name="confirmation_dialog_ok">OK</string>
@@ -24,4 +24,9 @@
 
     <string name="general_error_title">Error</string>
     <string name="api_error_title_unknown_desc">An error occurred, please try again later.</string>
+    <string name="customise_order_title">Customise Your Order</string>
+    <string name="crust">Crust</string>
+    <string name="size">Size</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="total_amt">Total : %1$s</string>
 </resources>

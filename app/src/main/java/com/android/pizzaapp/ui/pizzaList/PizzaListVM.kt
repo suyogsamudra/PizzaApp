@@ -16,11 +16,11 @@ class PizzaListVM : ViewModel() {
     val obsResponse = MutableLiveData<ApiResult<PizzaModel>>()
 
     fun getPizzaData() {
-       /* obsResponse.postValue(ApiResult(data = Gson().fromJson("{\n" +
+        obsResponse.postValue(ApiResult(data = Gson().fromJson("{\n" +
                 "\"name\": \"Non-Veg Pizza\",\n" +
                 "\"isVeg\": false,\n" +
-                "\"description\": \"Lorem ipsum dolor sit amet, consectetur\n" +
-                "adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore\n" +
+                "\"description\": \"Lorem ipsum dolor sit amet, consectetur " +
+                "adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore" +
                 "magna aliqua.\",\n" +
                 "\"defaultCrust\": 1,\n" +
                 "\"crusts\": [{\n" +
@@ -54,10 +54,10 @@ class PizzaListVM : ViewModel() {
                 "\"price\": 325.0\n" +
                 "}]\n" +
                 "}]\n" +
-                "}", PizzaModel::class.java)))*/
+                "}", PizzaModel::class.java)))
 
-        viewModelScope.launch {
+        /*viewModelScope.launch {
             obsResponse.postValue(repository.getPizzaData())
-        }
+        }*/
     }
 }

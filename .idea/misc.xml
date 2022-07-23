@@ -3,14 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/drop_down_bg.xml" value="0.139" />
         <entry key="app/src/main/res/drawable/ic_veg.xml" value="0.139" />
         <entry key="app/src/main/res/drawable/rectangular_bg.xml" value="0.139" />
         <entry key="app/src/main/res/drawable/rectangular_bg_rounded.xml" value="0.139" />
         <entry key="app/src/main/res/drawable/rounded_card.xml" value="0.139" />
         <entry key="app/src/main/res/drawable/rounded_frame.xml" value="0.139" />
+        <entry key="app/src/main/res/drawable/spinner_bg.xml" value="0.139" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14583333333333334" />
-        <entry key="app/src/main/res/layout/activity_pizza_list.xml" value="0.1609375" />
+        <entry key="app/src/main/res/layout/activity_pizza_list.xml" value="0.21398483572030327" />
+        <entry key="app/src/main/res/layout/customize_bs.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_info_bs.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/name_cell.xml" value="0.22" />
         <entry key="app/src/main/res/layout/pizza_cell.xml" value="0.2" />
       </map>
     </option>

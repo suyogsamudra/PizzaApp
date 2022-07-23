@@ -16,7 +16,7 @@ import com.android.pizzaapp.utils.InfoBSDialog
 import com.android.pizzaapp.utils.getChargesFormatted
 
 interface PizzaListUIInterface {
-    fun setInfo(pizzasDetails: PizzaModel)
+    fun setInfo(pizzasDetails: PizzaModel, addBtnCallback: (pizza: PizzaModel) -> Unit)
     fun showError(manager: FragmentManager)
 }
 
@@ -26,10 +26,10 @@ internal class PizzaListUI(private val context: Context, private val binding: Ac
         binding.recPizzaList.layoutManager = LinearLayoutManager(context)
     }
 
-    override fun setInfo(pizzasDetails: PizzaModel) {
+    override fun setInfo(pizzasDetails: PizzaModel, addBtnCallback: (pizza: PizzaModel) -> Unit) {
         binding.progressBar.visibility = GONE
         binding.mainLayout.visibility = VISIBLE
-        binding.recPizzaList.adapter = PizzaListRecAdapter(arrayListOf(pizzasDetails))
+        binding.recPizzaList.adapter = PizzaListRecAdapter(arrayListOf(pizzasDetails), addBtnCallback)
     }
 
     override fun showError(manager: FragmentManager) {
@@ -41,8 +41,10 @@ internal class PizzaListUI(private val context: Context, private val binding: Ac
     }
 }
 
-class PizzaListRecAdapter(private val pizzasList: ArrayList<PizzaModel>) :
-    RecyclerView.Adapter<PizzaListRecAdapter.ViewHolder>() {
+class PizzaListRecAdapter(
+    private val pizzasList: ArrayList<PizzaModel>,
+    private val addBtnCallback: (pizza: PizzaModel) -> Unit
+) : RecyclerView.Adapter<PizzaListRecAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: PizzaCellBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -51,11 +53,12 @@ class PizzaListRecAdapter(private val pizzasList: ArrayList<PizzaModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.binding) {
-            pizzasList[position].let {
-                txtName.text = it.name
-                txtDescription.text = it.description
-                txtPrice.text = it.getPrice()?.getChargesFormatted()
-                imgVeg.setImageResource(if (it.isVeg) R.drawable.ic_veg else R.drawable.non_veg)
+            pizzasList[position].let { pizza ->
+                txtName.text = pizza.name
+                txtDescription.text = pizza.description
+                txtPrice.text = pizza.getPrice()?.getChargesFormatted()
+                imgVeg.setImageResource(if (pizza.isVeg) R.drawable.ic_veg else R.drawable.non_veg)
+                btnAddToCart.setOnClickListener { addBtnCallback(pizza) }
             }
         }
     }

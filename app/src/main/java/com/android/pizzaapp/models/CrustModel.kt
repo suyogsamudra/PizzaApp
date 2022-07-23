@@ -8,7 +8,11 @@ data class CrustModel(
     @SerializedName("name")
     val name: String,
     @SerializedName("defaultSize")
-    val selectedSizeIndex: Int,
+    var sizeId: Int,
     @SerializedName("sizes")
     val availableSizes: ArrayList<PizzaSizeModel>,
-)
+) {
+    fun getSelectedSize(): PizzaSizeModel? {
+        return availableSizes.find { it.id == sizeId }
+    }
+}

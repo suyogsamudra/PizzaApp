@@ -62,5 +62,5 @@
         android:layout_below="@id/txtDescription"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="@dimen/general_top_margin"
-        android:text="@string/add_to_cart" />
+        android:text="@string/add" />
 </RelativeLayout>

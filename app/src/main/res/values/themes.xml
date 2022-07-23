@@ -16,20 +16,20 @@
     </style>
 
     <style name="AppTheme.TextExtraLarge">
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="AppTheme.TextLarge">
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">17sp</item>
     </style>
 
     <style name="AppTheme.TextMedium">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="AppTheme.TextSmall">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
     <style name="AppTheme.HintText" parent="AppTheme.TextSmall">
