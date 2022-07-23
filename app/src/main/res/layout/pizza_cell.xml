@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginBottom="15dp"
-    android:elevation="4dp"
+    android:layout_marginBottom="10dp"
     android:background="@drawable/rounded_card"
-    android:padding="15dp">
+    android:elevation="4dp"
+    android:orientation="vertical"
+    android:paddingStart="15dp"
+    android:paddingTop="15dp"
+    android:paddingEnd="15dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/imgVeg"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:padding="1dp"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@null"
+        app:srcCompat="@drawable/ic_veg" />
 
     <TextView
         android:id="@+id/txtName"
         style="@style/AppTheme.TextLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/txtPrice"
+        android:layout_alignBaseline="@id/imgVeg"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/imgVeg"
         android:maxLines="2"
         tools:text="Farm Fresh Pizza" />
 
@@ -23,10 +38,10 @@
         style="@style/AppTheme.TextMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtPrice"
+        android:layout_below="@id/txtName"
         android:layout_marginTop="5dp"
-        android:layout_toStartOf="@id/txtPrice"
         android:ellipsize="end"
+        android:lines="2"
         android:maxLines="3"
         tools:text="Loaded with Extra Cheese!!" />
 
@@ -35,16 +50,16 @@
         style="@style/AppTheme.TextExtraLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
+        android:layout_below="@id/txtDescription"
+        android:layout_marginTop="@dimen/general_top_margin"
         tools:text="₹ 500.00 " />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddToCart"
+        style="@style/SmallButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtDescription"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/general_top_margin"
+        android:layout_alignParentEnd="true"
         android:text="@string/add_to_cart" />
 </RelativeLayout>

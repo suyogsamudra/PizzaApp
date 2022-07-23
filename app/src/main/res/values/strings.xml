@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">PizzaApp</string>
-    <string name="add_to_cart">Add To Cart</string>
+    <string name="add_to_cart">Add +</string>
     <string name="price">₹%1$f</string>
+    <string name="go_to_cart">Go to cart</string>
 </resources>

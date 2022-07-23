@@ -3,6 +3,7 @@ package com.android.pizzaapp.ui.pizzaList
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.pizzaapp.R
@@ -15,7 +16,7 @@ interface PizzaListUIInterface {
     fun setList(pizzasList: ArrayList<PizzaModel>)
 }
 
-internal class PizzaListUI(val context: Context, private val binding: ActivityPizzaListBinding) : PizzaListUIInterface {
+internal class PizzaListUI(context: Context, private val binding: ActivityPizzaListBinding) : PizzaListUIInterface {
 
     init {
         binding.recPizzaList.layoutManager = LinearLayoutManager(context)
@@ -40,6 +41,7 @@ class PizzaListRecAdapter(private val pizzasList: ArrayList<PizzaModel>) :
                 txtName.text = it.name
                 txtDescription.text = it.description
                 txtPrice.text = it.selectedCrust?.selectedSize?.price?.getChargesFormatted()
+                imgVeg.setImageResource(if(it.isVeg) R.drawable.ic_veg else R.drawable.non_veg )
             }
         }
     }
