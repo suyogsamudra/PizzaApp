@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="15dp"
+    android:elevation="4dp"
+    android:background="@drawable/rounded_card"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/txtName"
+        style="@style/AppTheme.TextLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/txtPrice"
+        android:maxLines="2"
+        tools:text="Farm Fresh Pizza" />
+
+    <TextView
+        android:id="@+id/txtDescription"
+        style="@style/AppTheme.TextMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtPrice"
+        android:layout_marginTop="5dp"
+        android:layout_toStartOf="@id/txtPrice"
+        android:ellipsize="end"
+        android:maxLines="3"
+        tools:text="Loaded with Extra Cheese!!" />
+
+    <TextView
+        android:id="@+id/txtPrice"
+        style="@style/AppTheme.TextExtraLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        tools:text="₹ 500.00 " />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddToCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtDescription"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/general_top_margin"
+        android:text="@string/add_to_cart" />
+</RelativeLayout>
