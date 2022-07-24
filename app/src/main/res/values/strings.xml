@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">PizzaApp</string>
+    <string name="serving_now">Pizza Menu</string>
     <string name="add">Add +</string>
     <string name="price">₹%1$f</string>
     <string name="go_to_cart">Go to cart</string>
@@ -39,4 +40,5 @@
     <string name="confirm_order">Confirm Order</string>
     <string name="coming_soon">Feature coming soon…</string>
     <string name="order_total">Order Total %1$s</string>
+    <string name="your_cart">Your Cart</string>
 </resources>

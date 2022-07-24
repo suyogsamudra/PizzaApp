@@ -7,7 +7,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
-import android.widget.Toast.LENGTH_LONG
+import android.widget.Toast.LENGTH_SHORT
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +21,7 @@ import com.android.pizzaapp.models.PizzaSizeModel
 import com.android.pizzaapp.utils.getChargesFormatted
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class CustomiseBSDialog(private val pizzaModel: PizzaModel, val itemAddedCallback : (list : ArrayList<PizzaModel>) -> Unit) : BottomSheetDialogFragment() {
+class CustomiseBSDialog(private val pizzaModel: PizzaModel, val itemAddedCallback: (list: ArrayList<PizzaModel>) -> Unit) : BottomSheetDialogFragment() {
     private lateinit var binding: CustomizeBsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +61,7 @@ class CustomiseBSDialog(private val pizzaModel: PizzaModel, val itemAddedCallbac
         binding.btnAdd.setOnClickListener {
             itemAddedCallback(CartContainer.addToCart(requireContext(), pizzaModel))
             dismiss()
-            Toast.makeText(context, getString(R.string.added_to_cart), LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.added_to_cart), LENGTH_SHORT).show()
         }
     }
 

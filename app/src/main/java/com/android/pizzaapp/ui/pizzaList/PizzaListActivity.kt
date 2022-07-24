@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.android.pizzaapp.business.CartContainer
+import com.android.pizzaapp.R
 import com.android.pizzaapp.databinding.ActivityPizzaListBinding
 import com.android.pizzaapp.models.handlerError
 import com.android.pizzaapp.ui.cart.CartActivity
@@ -26,6 +26,8 @@ class PizzaListActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[PizzaListVM::class.java]
         uiInterface = PizzaListUI(context, binding)
+
+        supportActionBar?.title = getString(R.string.serving_now)
 
         viewModel.obsResponse.observe(this) { response ->
             response?.error?.handlerError(supportFragmentManager, context)
