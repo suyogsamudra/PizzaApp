@@ -13,7 +13,10 @@ internal class PizzaDetailsRepo {
                 if (isSuccessful) ApiResult(data = body()) else ApiResult(error = ApiError(code(), message()))
             }
         } catch (ex: Exception) {
-            ApiResult(error = ApiError(message = ex.message, exception = ex))
+            if (ex is IllegalStateException)
+                ApiResult(error = ApiError(message = "Unexpected response from server", exception = ex))
+            else
+                ApiResult(error = ApiError(message = ex.message, exception = ex))
         }
     }
 }

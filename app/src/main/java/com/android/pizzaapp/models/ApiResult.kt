@@ -20,8 +20,8 @@ enum class HttpError(val value: Int) {
     }
 }
 
-fun ApiError.handlerError(manager: FragmentManager, context: Context) {
-    InfoBSDialog(getErrorTitle(context), getErrorMessage(context), finishActivity = false)
+fun ApiError.handlerError(manager: FragmentManager, context: Context, finishActivity : Boolean = false) {
+    InfoBSDialog(getErrorTitle(context), getErrorMessage(context), finishActivity)
         .show(manager, "CommonErrorDialog")
 }
 

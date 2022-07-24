@@ -30,7 +30,7 @@ class PizzaListActivity : AppCompatActivity() {
         supportActionBar?.title = getString(R.string.serving_now)
 
         viewModel.obsResponse.observe(this) { response ->
-            response?.error?.handlerError(supportFragmentManager, context)
+            response?.error?.handlerError(supportFragmentManager, context, true)
                 ?: response.data?.let {
                     uiInterface.setInfo(it) { pizza ->
                         CustomiseBSDialog(pizza) { uiInterface.updateButtonStatus() }.show(supportFragmentManager, "Add")
