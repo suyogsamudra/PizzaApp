@@ -5,20 +5,18 @@ import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
+import com.android.pizzaapp.databinding.ActivityCartBinding
 import com.android.pizzaapp.databinding.ActivityPizzaListBinding
 
 class CartActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityPizzaListBinding
+    private lateinit var binding: ActivityCartBinding
     private lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPizzaListBinding.inflate(layoutInflater)
+        binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
         context = this
-
-        binding.progressBar.visibility = GONE
-        binding.mainLayout.visibility = VISIBLE
 
         CartUI(binding).showList(supportFragmentManager, context)
     }

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.pizzaapp.R
 import com.android.pizzaapp.business.CartContainer
-import com.android.pizzaapp.databinding.ActivityPizzaListBinding
+import com.android.pizzaapp.databinding.ActivityCartBinding
 import com.android.pizzaapp.databinding.CartCellBinding
 import com.android.pizzaapp.models.PizzaModel
 import com.android.pizzaapp.utils.InfoBSDialog
@@ -22,15 +22,12 @@ interface CartUIInterface {
     fun showList(manager: FragmentManager, context: Context)
 }
 
-class CartUI(private val binding: ActivityPizzaListBinding) : CartUIInterface {
+class CartUI(private val binding: ActivityCartBinding) : CartUIInterface {
     private var adapter: CartaListRecAdapter? = null
 
     @SuppressLint("NotifyDataSetChanged")
     override fun showList(manager: FragmentManager, context: Context) {
         with(binding) {
-            progressBar.visibility = GONE
-            mainLayout.visibility = VISIBLE
-
             recPizzaList.layoutManager = LinearLayoutManager(context)
             adapter = CartaListRecAdapter(CartContainer.getCartContent(context),
                 { pos, pizza -> handleAdd(context, pos, pizza) },
@@ -38,8 +35,7 @@ class CartUI(private val binding: ActivityPizzaListBinding) : CartUIInterface {
 
             recPizzaList.adapter = adapter
 
-            btnViewCart.text = context.getString(R.string.confirm_order)
-            btnViewCart.setOnClickListener {
+            binding.btnConfirmOrder.setOnClickListener {
                 Toast.makeText(
                     context, context.getString(R.string.coming_soon), Toast.LENGTH_LONG
                 ).show()
@@ -47,6 +43,7 @@ class CartUI(private val binding: ActivityPizzaListBinding) : CartUIInterface {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun handleRemove(context: Context, manager: FragmentManager, pos: Int, pizza: PizzaModel) {
         if (pizza.quantity > 1) {
             adapter?.updateList(CartContainer.removeFromCart(context, pizza))
@@ -60,7 +57,7 @@ class CartUI(private val binding: ActivityPizzaListBinding) : CartUIInterface {
                     CartContainer.removeFromCart(context, pizza).let {
                         if (it.isEmpty()) {
                             binding.recPizzaList.visibility = GONE
-                            binding.btnViewCart.visibility = GONE
+                            binding.btnConfirmOrder.visibility = GONE
                             binding.txtEmpty.visibility = VISIBLE
                             binding.txtEmpty.text = context.getString(R.string.cart_empty)
                         }

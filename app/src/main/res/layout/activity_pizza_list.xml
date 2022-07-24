@@ -7,15 +7,6 @@
     android:orientation="vertical"
     tools:context=".ui.pizzaList.PizzaListActivity">
 
-    <TextView
-        android:id="@+id/txtEmpty"
-        style="@style/AppTheme.TextExtraLarge"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/general_activity_padding"
-        android:visibility="gone" />
-
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
