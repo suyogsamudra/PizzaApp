@@ -11,7 +11,7 @@ android {
         minSdk 21
         targetSdk 32
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_URL", '"https://625bbd9d50128c570206e502.mockapi.io/api/"'
