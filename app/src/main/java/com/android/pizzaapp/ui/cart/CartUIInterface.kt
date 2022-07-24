@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,7 +35,15 @@ class CartUI(private val binding: ActivityPizzaListBinding) : CartUIInterface {
             adapter = CartaListRecAdapter(CartContainer.getCartContent(context),
                 { pos, pizza -> handleAdd(context, pos, pizza) },
                 { pos, pizza -> handleRemove(context, manager, pos, pizza) })
+
             recPizzaList.adapter = adapter
+
+            btnViewCart.text = context.getString(R.string.confirm_order)
+            btnViewCart.setOnClickListener {
+                Toast.makeText(
+                    context, context.getString(R.string.coming_soon), Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
@@ -48,7 +57,15 @@ class CartUI(private val binding: ActivityPizzaListBinding) : CartUIInterface {
                 context.getString(R.string.confirmation_dialog_no),
                 context.getString(R.string.confirm_remove), {
                 }, {
-                    adapter?.updateList(CartContainer.removeFromCart(context, pizza))
+                    CartContainer.removeFromCart(context, pizza).let {
+                        if (it.isEmpty()) {
+                            binding.recPizzaList.visibility = GONE
+                            binding.btnViewCart.visibility = GONE
+                            binding.txtEmpty.visibility = VISIBLE
+                            binding.txtEmpty.text = context.getString(R.string.cart_empty)
+                        }
+                        adapter?.updateList(it)
+                    }
                     binding.recPizzaList.adapter?.notifyDataSetChanged()
                 }).show(manager, "RemoveConfirmation")
         }

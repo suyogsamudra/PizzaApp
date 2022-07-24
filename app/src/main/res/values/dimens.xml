@@ -4,4 +4,5 @@
     <dimen name="general_top_margin">10dp</dimen>
     <dimen name="general_section_top_margin">20dp</dimen>
     <dimen name="small_top_margin">5dp</dimen>
+    <dimen name="general_activity_padding">16dp</dimen>
 </resources>

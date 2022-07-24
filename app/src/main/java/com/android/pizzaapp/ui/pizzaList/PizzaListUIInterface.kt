@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.pizzaapp.R
+import com.android.pizzaapp.business.CartContainer
 import com.android.pizzaapp.databinding.ActivityPizzaListBinding
 import com.android.pizzaapp.databinding.PizzaCellBinding
 import com.android.pizzaapp.models.PizzaModel
@@ -18,6 +19,7 @@ import com.android.pizzaapp.utils.getChargesFormatted
 interface PizzaListUIInterface {
     fun setInfo(pizzasDetails: PizzaModel, addBtnCallback: (pizza: PizzaModel) -> Unit)
     fun showError(manager: FragmentManager)
+    fun updateButtonStatus()
 }
 
 internal class PizzaListUI(private val context: Context, private val binding: ActivityPizzaListBinding) : PizzaListUIInterface {
@@ -38,6 +40,10 @@ internal class PizzaListUI(private val context: Context, private val binding: Ac
             context.getString(R.string.no_internet_error_title),
             context.getString(R.string.no_internet_error_desc), true
         ).show(manager, "Error")
+    }
+
+    override fun updateButtonStatus() {
+        binding.btnViewCart.isEnabled = CartContainer.getCartContent(context).isNotEmpty()
     }
 }
 

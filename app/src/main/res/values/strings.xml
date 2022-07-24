@@ -35,4 +35,7 @@
     <string name="remove_title">Remove Pizza</string>
     <string name="remove_desc">Are you sure you want to remove this Pizza from your cart</string>
     <string name="confirm_remove">Yes, Remove</string>
+    <string name="cart_empty">Your cart is empty at this moment.</string>
+    <string name="confirm_order">Confirm Order</string>
+    <string name="coming_soon">Feature coming soon…</string>
 </resources>

@@ -21,7 +21,7 @@ import com.android.pizzaapp.models.PizzaSizeModel
 import com.android.pizzaapp.utils.getChargesFormatted
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class CustomiseBSDialog(private val pizzaModel: PizzaModel) : BottomSheetDialogFragment() {
+class CustomiseBSDialog(private val pizzaModel: PizzaModel, val itemAddedCallback : (list : ArrayList<PizzaModel>) -> Unit) : BottomSheetDialogFragment() {
     private lateinit var binding: CustomizeBsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +59,7 @@ class CustomiseBSDialog(private val pizzaModel: PizzaModel) : BottomSheetDialogF
         binding.txtSize.setOnClickListener { toggleSelectors(false) }
 
         binding.btnAdd.setOnClickListener {
-            CartContainer.addToCart(requireContext(), pizzaModel)
+            itemAddedCallback(CartContainer.addToCart(requireContext(), pizzaModel))
             dismiss()
             Toast.makeText(context, getString(R.string.added_to_cart), LENGTH_LONG).show()
         }

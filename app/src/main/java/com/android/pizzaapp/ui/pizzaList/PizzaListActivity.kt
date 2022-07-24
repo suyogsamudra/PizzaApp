@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.android.pizzaapp.business.CartContainer
 import com.android.pizzaapp.databinding.ActivityPizzaListBinding
 import com.android.pizzaapp.models.handlerError
 import com.android.pizzaapp.ui.cart.CartActivity
@@ -30,7 +31,7 @@ class PizzaListActivity : AppCompatActivity() {
             response?.error?.handlerError(supportFragmentManager, context)
                 ?: response.data?.let {
                     uiInterface.setInfo(it) { pizza ->
-                        CustomiseBSDialog(pizza).show(supportFragmentManager, "Add")
+                        CustomiseBSDialog(pizza) { uiInterface.updateButtonStatus() }.show(supportFragmentManager, "Add")
                     }
                 }
         }
@@ -38,5 +39,10 @@ class PizzaListActivity : AppCompatActivity() {
         if (isOnline(context)) viewModel.getPizzaData() else uiInterface.showError(supportFragmentManager)
 
         binding.btnViewCart.setOnClickListener { startActivity(Intent(context, CartActivity::class.java)) }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        uiInterface.updateButtonStatus()
     }
 }
