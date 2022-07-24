@@ -1,4 +1,4 @@
-package com.android.pizzaapp.ui
+package com.android.pizzaapp.ui.customisationDialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -50,6 +50,7 @@ class CustomiseBSDialog(private val pizzaModel: PizzaModel) : BottomSheetDialogF
         }
 
         setSizeAdapter()
+        updatePrice()
 
         binding.txtCrust.setOnClickListener { toggleSelectors(true) }
         binding.txtSize.setOnClickListener { toggleSelectors(false) }
@@ -57,6 +58,8 @@ class CustomiseBSDialog(private val pizzaModel: PizzaModel) : BottomSheetDialogF
 
     private fun setSizeAdapter() {
         binding.recSize.adapter = RecyclerCrustAdapter(pizzaModel.getCrust()?.availableSizes!!) {
+            //Purposefully updating defaultSize here, to remember the last selected combination
+            //To preserve the default selection, simply introduce new variable. (selectedSize)
             pizzaModel.getCrust()?.sizeId = it.id
             binding.txtSize.text = it.name
             updatePrice()

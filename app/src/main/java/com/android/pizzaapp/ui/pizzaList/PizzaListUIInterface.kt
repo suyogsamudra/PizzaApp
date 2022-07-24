@@ -58,7 +58,10 @@ class PizzaListRecAdapter(
                 txtDescription.text = pizza.description
                 txtPrice.text = pizza.getPrice()?.getChargesFormatted()
                 imgVeg.setImageResource(if (pizza.isVeg) R.drawable.ic_veg else R.drawable.non_veg)
-                btnAddToCart.setOnClickListener { addBtnCallback(pizza) }
+                btnAddToCart.setOnClickListener {
+                    //Deep copying - to avoid change in original object
+                    addBtnCallback(pizza.copy(crustList = ArrayList(pizza.crustList.map { it.copy() })))
+                }
             }
         }
     }

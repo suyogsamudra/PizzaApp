@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.android.pizzaapp.databinding.ActivityPizzaListBinding
 import com.android.pizzaapp.models.handlerError
-import com.android.pizzaapp.ui.CustomiseBSDialog
+import com.android.pizzaapp.ui.customisationDialog.CustomiseBSDialog
 import com.android.pizzaapp.utils.isOnline
 
 class PizzaListActivity : AppCompatActivity() {
