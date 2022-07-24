@@ -17,9 +17,12 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:label="Our Pizzas"
+            android:name=".ui.cart.CartActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.pizzaList.PizzaListActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="Our Pizzas">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

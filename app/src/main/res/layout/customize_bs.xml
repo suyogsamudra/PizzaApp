@@ -104,7 +104,7 @@
         tools:text="@string/total_amt" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnOk"
+        android:id="@+id/btnAdd"
         style="@style/SubmitButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

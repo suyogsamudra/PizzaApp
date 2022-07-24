@@ -55,7 +55,13 @@ class InfoBSDialog(
             }
         }
 
-        binding.btnYes.setOnClickListener { btnPositiveClick() }
-        binding.btnNo.setOnClickListener { btnNegativeClick() }
+        binding.btnYes.setOnClickListener {
+            btnPositiveClick()
+            dialog?.dismiss()
+        }
+        binding.btnNo.setOnClickListener {
+            btnNegativeClick()
+            dialog?.dismiss()
+        }
     }
 }

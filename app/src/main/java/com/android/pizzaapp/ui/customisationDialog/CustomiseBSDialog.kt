@@ -6,11 +6,14 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.android.pizzaapp.R
+import com.android.pizzaapp.business.CartContainer
 import com.android.pizzaapp.databinding.CustomizeBsBinding
 import com.android.pizzaapp.databinding.NameCellBinding
 import com.android.pizzaapp.models.PizzaModel
@@ -54,6 +57,12 @@ class CustomiseBSDialog(private val pizzaModel: PizzaModel) : BottomSheetDialogF
 
         binding.txtCrust.setOnClickListener { toggleSelectors(true) }
         binding.txtSize.setOnClickListener { toggleSelectors(false) }
+
+        binding.btnAdd.setOnClickListener {
+            CartContainer.addToCart(requireContext(), pizzaModel)
+            dismiss()
+            Toast.makeText(context, getString(R.string.added_to_cart), LENGTH_LONG).show()
+        }
     }
 
     private fun setSizeAdapter() {

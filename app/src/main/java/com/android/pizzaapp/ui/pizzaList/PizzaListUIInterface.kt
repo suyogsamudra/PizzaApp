@@ -41,7 +41,7 @@ internal class PizzaListUI(private val context: Context, private val binding: Ac
     }
 }
 
-class PizzaListRecAdapter(
+private class PizzaListRecAdapter(
     private val pizzasList: ArrayList<PizzaModel>,
     private val addBtnCallback: (pizza: PizzaModel) -> Unit
 ) : RecyclerView.Adapter<PizzaListRecAdapter.ViewHolder>() {

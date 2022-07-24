@@ -33,6 +33,7 @@
             android:padding="10dp" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnViewCart"
             style="@style/SubmitButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

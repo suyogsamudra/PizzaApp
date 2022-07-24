@@ -12,8 +12,9 @@ data class PizzaModel(
     @SerializedName("defaultCrust")
     var crustId: Int,
     @SerializedName("crusts")
-    val crustList: ArrayList<CrustModel>,
+    val crustList: ArrayList<CrustModel>
 ) {
+    var quantity: Int = 1
     fun getPrice(): Double? {
         val selectedCrust = crustList.find { crust -> crust.id == this.crustId }
         return selectedCrust?.availableSizes?.find { size -> size.id == selectedCrust.sizeId }?.price

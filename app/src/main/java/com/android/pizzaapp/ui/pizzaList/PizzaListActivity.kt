@@ -1,11 +1,13 @@
 package com.android.pizzaapp.ui.pizzaList
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.android.pizzaapp.databinding.ActivityPizzaListBinding
 import com.android.pizzaapp.models.handlerError
+import com.android.pizzaapp.ui.cart.CartActivity
 import com.android.pizzaapp.ui.customisationDialog.CustomiseBSDialog
 import com.android.pizzaapp.utils.isOnline
 
@@ -26,11 +28,15 @@ class PizzaListActivity : AppCompatActivity() {
 
         viewModel.obsResponse.observe(this) { response ->
             response?.error?.handlerError(supportFragmentManager, context)
-                ?: response.data?.let { uiInterface.setInfo(it) { pizza ->
-                    CustomiseBSDialog(pizza).show(supportFragmentManager, "Add")
-                } }
+                ?: response.data?.let {
+                    uiInterface.setInfo(it) { pizza ->
+                        CustomiseBSDialog(pizza).show(supportFragmentManager, "Add")
+                    }
+                }
         }
 
         if (isOnline(context)) viewModel.getPizzaData() else uiInterface.showError(supportFragmentManager)
+
+        binding.btnViewCart.setOnClickListener { startActivity(Intent(context, CartActivity::class.java)) }
     }
 }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    android:background="@drawable/rounded_card"
+    android:elevation="4dp"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/imgVeg"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@null"
+        android:padding="1dp"
+        app:srcCompat="@drawable/ic_veg" />
+
+    <TextView
+        android:id="@+id/txtName"
+        style="@style/AppTheme.TextLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/imgVeg"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/imgVeg"
+        android:maxLines="2"
+        tools:text="Farm Fresh Pizza" />
+
+    <TextView
+        android:id="@+id/txtDescription"
+        style="@style/AppTheme.TextMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtName"
+        android:layout_marginTop="@dimen/small_top_margin"
+        android:layout_marginBottom="15dp"
+        android:ellipsize="end"
+        android:maxLines="4"
+        tools:text="Crust: Cheese Burst,  Size: Regular" />
+
+    <TextView
+        android:id="@+id/refQty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtDescription"
+        android:layout_alignTop="@id/txtQty"
+        android:layout_alignBottom="@id/txtQty"
+        android:layout_marginEnd="5dp"
+        android:gravity="center"
+        android:text="@string/quantity" />
+
+    <ImageView
+        android:id="@+id/imgRemove"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/txtDescription"
+        android:layout_toEndOf="@id/refQty"
+        android:contentDescription="@null"
+        app:srcCompat="@drawable/ic_remove" />
+
+    <TextView
+        android:id="@+id/txtQty"
+        style="@style/AppTheme.TextExtraLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtDescription"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_toEndOf="@id/imgRemove"
+        tools:text="3" />
+
+    <ImageView
+        android:id="@+id/imgAdd"
+        style="@style/AppTheme.TextExtraLarge"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/txtDescription"
+        android:layout_toEndOf="@id/txtQty"
+        android:contentDescription="@null"
+        app:srcCompat="@drawable/ic_add" />
+
+    <TextView
+        android:id="@+id/txtPrice"
+        style="@style/AppTheme.TextExtraLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/txtQty"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        tools:text="₹ 500.00 " />
+</RelativeLayout>
