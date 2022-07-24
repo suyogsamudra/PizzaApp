@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/list_background"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".ui.pizzaList.PizzaListActivity">
@@ -26,15 +27,15 @@
         android:padding="10dp" />
 
     <TextView
-        android:id="@+id/txtGrandTotal"
+        android:id="@+id/txtOrderTotal"
         style="@style/AppTheme.TextExtraLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/general_top_margin"
         android:layout_marginStart="@dimen/general_activity_padding"
+        android:layout_marginTop="@dimen/general_top_margin"
         android:layout_marginEnd="@dimen/general_activity_padding"
         android:gravity="center"
-        tools:text="Grand Total: ₹2050.00/-" />
+        tools:text="Order Total: ₹2050.00/-" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnConfirmOrder"

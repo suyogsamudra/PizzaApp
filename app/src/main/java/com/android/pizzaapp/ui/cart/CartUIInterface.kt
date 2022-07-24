@@ -29,16 +29,15 @@ class CartUI(private val binding: ActivityCartBinding) : CartUIInterface {
     override fun showList(manager: FragmentManager, context: Context) {
         with(binding) {
             recPizzaList.layoutManager = LinearLayoutManager(context)
-            adapter = CartaListRecAdapter(CartContainer.getCartContent(context),
-                { pos, pizza -> handleAdd(context, pos, pizza) },
+            val list = CartContainer.getCartContent(context)
+            updateOrderTotal(context, list)
+            adapter = CartaListRecAdapter(list, { pos, pizza -> handleAdd(context, pos, pizza) },
                 { pos, pizza -> handleRemove(context, manager, pos, pizza) })
 
             recPizzaList.adapter = adapter
 
             binding.btnConfirmOrder.setOnClickListener {
-                Toast.makeText(
-                    context, context.getString(R.string.coming_soon), Toast.LENGTH_LONG
-                ).show()
+                Toast.makeText(context, context.getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -46,18 +45,23 @@ class CartUI(private val binding: ActivityCartBinding) : CartUIInterface {
     @SuppressLint("NotifyDataSetChanged")
     private fun handleRemove(context: Context, manager: FragmentManager, pos: Int, pizza: PizzaModel) {
         if (pizza.quantity > 1) {
-            adapter?.updateList(CartContainer.removeFromCart(context, pizza))
+            CartContainer.removeFromCart(context, pizza).let {
+                adapter?.updateList(it)
+                updateOrderTotal(context, it)
+            }
             adapter?.notifyItemChanged(pos)
         } else {
             InfoBSDialog(context.getString(R.string.remove_title), context.getString(R.string.remove_desc),
-                finishActivity = false, isDialogCancelable = true, true,
+                finishActivity = false, isDialogCancelable = false, true,
                 context.getString(R.string.confirmation_dialog_no),
                 context.getString(R.string.confirm_remove), {
                 }, {
                     CartContainer.removeFromCart(context, pizza).let {
+                        updateOrderTotal(context, it)
                         if (it.isEmpty()) {
                             binding.recPizzaList.visibility = GONE
                             binding.btnConfirmOrder.visibility = GONE
+                            binding.txtOrderTotal.visibility = GONE
                             binding.txtEmpty.visibility = VISIBLE
                             binding.txtEmpty.text = context.getString(R.string.cart_empty)
                         }
@@ -69,10 +73,19 @@ class CartUI(private val binding: ActivityCartBinding) : CartUIInterface {
     }
 
     private fun handleAdd(context: Context, pos: Int, pizza: PizzaModel) {
-        adapter?.updateList(CartContainer.addToCart(context, pizza))
+        CartContainer.addToCart(context, pizza).let {
+            adapter?.updateList(it)
+            updateOrderTotal(context, it)
+        }
         adapter?.notifyItemChanged(pos)
     }
 
+    private fun updateOrderTotal(context: Context, list: ArrayList<PizzaModel>) {
+        binding.txtOrderTotal.text = context.getString(
+            R.string.order_total,
+            list.sumOf { it.quantity * (it.getPrice() ?: 0.0) }.getChargesFormatted(suffix = "/-")
+        )
+    }
 }
 
 private class CartaListRecAdapter(
